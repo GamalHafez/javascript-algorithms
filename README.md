@@ -1,0 +1,1 @@
+This repository contains my solutions while learning algorithms and data structures using JavaScript.
