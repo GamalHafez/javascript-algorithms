@@ -11,3 +11,5 @@ const fibonacci = (n) => {
 
 console.log(fibonacci(3)); // [0, 1, 1]
 console.log(fibonacci(4)); // [0, 1, 1, 2]
+
+export default fibonacci;

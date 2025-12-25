@@ -1,4 +1,4 @@
-export const factorial = (n) => {
+const factorial = (n) => {
   let result = 1;
   for (let i = 1; i <= n; i++) {
     result *= i;
@@ -12,3 +12,5 @@ factorial(0); // 1
 factorial(1); // 1
 factorial(4); // 24
 factorial(5); // 120
+
+export default factorial;
