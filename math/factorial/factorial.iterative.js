@@ -1,4 +1,6 @@
 const factorial = (n) => {
+  if (n < 0) return null; // Edge case
+
   let result = 1;
   for (let i = 1; i <= n; i++) {
     result *= i;

@@ -1,4 +1,4 @@
-import fibonacci from "./fibonacci";
+import fibonacci from "./fibonacci.iterative";
 
 describe("fibonacci", () => {
   test("returns the first n Fibonacci numbers", () => {
