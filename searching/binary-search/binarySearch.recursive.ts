@@ -4,11 +4,11 @@
  */
 
 const recursiveBinarySearch = (
-  arr,
-  target,
+  arr: number[],
+  target: number,
   left = 0,
   right = arr.length - 1
-) => {
+): number => {
   if (left > right) return -1; // Base case: search space is empty
 
   const middle = Math.floor((left + right) / 2);

@@ -1,4 +1,4 @@
-const fibonacci = (n) => {
+const fibonacci = (n: number): number[] => {
   const fib = [0, 1];
 
   for (let i = fib.length; i < n; i++) {
@@ -8,8 +8,5 @@ const fibonacci = (n) => {
   return fib;
 };
 // Time Complexity: O(n)
-
-console.log(fibonacci(3)); // [0, 1, 1]
-console.log(fibonacci(4)); // [0, 1, 1, 2]
 
 export default fibonacci;

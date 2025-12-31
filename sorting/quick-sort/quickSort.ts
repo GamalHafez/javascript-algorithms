@@ -1,4 +1,4 @@
-function quickSort(arr) {
+function quickSort(arr: number[]): number[] {
   if (arr.length < 2) {
     return arr;
   }

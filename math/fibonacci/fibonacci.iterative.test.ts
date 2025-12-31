@@ -1,4 +1,5 @@
 import fibonacci from "./fibonacci.iterative";
+// TODO: Install and configure a test runner (Jest/Vitest) for this test file
 
 describe("fibonacci", () => {
   test("returns the first n Fibonacci numbers", () => {

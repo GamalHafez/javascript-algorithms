@@ -1,5 +1,6 @@
 import factorial from "./factorial.iterative.js";
 import recursiveFactorial from "./factorial.recursive.js";
+// TODO: Install and configure a test runner (Jest/Vitest) for this test file
 
 describe("Factorial implementations", () => {
   const implementations = [

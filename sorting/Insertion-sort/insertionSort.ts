@@ -1,4 +1,4 @@
-const insertionSort = (arr) => {
+const insertionSort = (arr: number[]): number[] => {
   for (let i = 1; i < arr.length; i++) {
     const NTI = arr[i];
     let j = i - 1;

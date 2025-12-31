@@ -1,4 +1,4 @@
-const isPrime = (n) => {
+const isPrime = (n: number): boolean => {
   if (n < 2) return false;
 
   const limit = Math.sqrt(n);
@@ -8,10 +8,5 @@ const isPrime = (n) => {
   return true;
 };
 // Time Complexity: O(sqrt(n)) or O(√n)
-
-console.log(isPrime(1)); // false
-console.log(isPrime(2)); // true
-console.log(isPrime(4)); // false
-console.log(isPrime(5)); // true
 
 export default isPrime;

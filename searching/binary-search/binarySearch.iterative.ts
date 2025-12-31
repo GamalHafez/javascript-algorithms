@@ -3,7 +3,7 @@
   find the index of in the array.
   Return -1 if the target element is not found.*/
 
-const binarySearch = (array, target) => {
+const binarySearch = (array: number[], target: number): number => {
   let from = 0;
   let to = array.length - 1;
 
@@ -22,12 +22,6 @@ const binarySearch = (array, target) => {
 
   return -1;
 };
-
 // Time Complexity: O(log(n))
-
-const arr = [-1, 3, 7, 18, 45];
-console.log(binarySearch(arr, -1)); // 0
-console.log(binarySearch(arr, 7)); // 2
-console.log(binarySearch(arr, 45)); // 4
 
 export default binarySearch;

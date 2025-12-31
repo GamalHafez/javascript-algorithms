@@ -1,4 +1,4 @@
-const bubbleSort = (arr) => {
+const bubbleSort = (arr: number[]): number[] => {
   let isSorted = false;
 
   while (!isSorted) {

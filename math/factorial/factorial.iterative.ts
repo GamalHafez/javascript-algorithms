@@ -1,4 +1,4 @@
-const factorial = (n) => {
+const factorial = (n: number): number | null => {
   if (n < 0) return null; // Edge case
 
   let result = 1;
