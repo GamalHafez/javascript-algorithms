@@ -70,6 +70,10 @@ class LinkedList<T> {
     return removedValue;
   }
 
+  peekFront(): T | undefined {
+    return this.head?.value;
+  }
+
   print() {
     if (this.isEmpty()) {
       console.log("List is empty");
