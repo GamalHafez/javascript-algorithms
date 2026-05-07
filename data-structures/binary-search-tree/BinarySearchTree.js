@@ -35,6 +35,17 @@ class BinarySearchTree {
       }
     }
   }
+
+  contains(value, root = this.root) {
+    if (!root) return false;
+    if (root.value === value) return true;
+
+    if (value < root.value) {
+      return this.contains(value, root.left);
+    } else {
+      return this.contains(value, root.right);
+    }
+  }
 }
 
 export default BinarySearchTree;
