@@ -106,6 +106,30 @@ class BinarySearchTree {
 
     return result;
   }
+
+  min() {
+    if (this.isEmpty()) return undefined;
+
+    let current = this.root;
+    if (!current) return undefined;
+
+    while (current.left) {
+      current = current.left;
+    }
+    return current.value;
+  }
+
+  max() {
+    if (this.isEmpty()) return undefined;
+
+    let current = this.root;
+    if (!current) return undefined;
+
+    while (current.right) {
+      current = current.right;
+    }
+    return current.value;
+  }
 }
 
 export default BinarySearchTree;
