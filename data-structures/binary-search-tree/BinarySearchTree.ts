@@ -1,26 +1,24 @@
-import BSTNode from "./BSTNode.js";
+import BSTNode from "./BSTNode.ts";
 import Queue from "../queue/queue.ts";
-class BinarySearchTree {
-  constructor() {
-    this.root = null;
-  }
+class BinarySearchTree<T extends number | string> {
+  private root: BSTNode<T> | null = null;
 
-  isEmpty() {
+  isEmpty(): boolean {
     return this.root === null;
   }
 
-  insert(value) {
-    const node = new BSTNode(value);
+  insert(value: T) {
+    const node = new BSTNode<T>(value);
 
     if (this.isEmpty()) {
       this.root = node;
       return;
     }
 
-    this.insertNode(this.root, node);
+    this.root && this.insertNode(this.root, node);
   }
 
-  insertNode(root, newNode) {
+  insertNode(root: BSTNode<T>, newNode: BSTNode<T>) {
     if (newNode.value < root.value) {
       if (!root.left) {
         root.left = newNode;
@@ -36,7 +34,7 @@ class BinarySearchTree {
     }
   }
 
-  contains(value, root = this.root) {
+  contains(value: T, root = this.root): boolean {
     if (!root) return false;
     if (root.value === value) return true;
 
@@ -47,7 +45,7 @@ class BinarySearchTree {
     }
   }
 
-  preOrder(root = this.root, result = []) {
+  preOrder(root = this.root, result: T[] = []): T[] {
     if (root) {
       result.push(root.value);
 
@@ -58,7 +56,7 @@ class BinarySearchTree {
     return result;
   }
 
-  inOrder(root = this.root, result = []) {
+  inOrder(root = this.root, result: T[] = []): T[] {
     if (root) {
       this.inOrder(root.left, result);
 
@@ -70,7 +68,7 @@ class BinarySearchTree {
     return result;
   }
 
-  postOrder(root = this.root, result = []) {
+  postOrder(root = this.root, result: T[] = []): T[] {
     if (root) {
       this.postOrder(root.left, result);
 
@@ -82,24 +80,24 @@ class BinarySearchTree {
     return result;
   }
 
-  levelOrder() {
-    if (this.isEmpty()) return [];
+  levelOrder(): T[] {
+    const result: T[] = [];
+    if (this.isEmpty()) return result;
 
-    const queue = new Queue();
-    const result = [];
+    const queue = new Queue<BSTNode<T>>();
 
-    queue.enqueue(this.root);
+    this.root && queue.enqueue(this.root);
 
     while (!queue.isEmpty()) {
       const node = queue.dequeue();
 
-      result.push(node.value);
+      node && result.push(node.value);
 
-      if (node.left) {
+      if (node?.left) {
         queue.enqueue(node.left);
       }
 
-      if (node.right) {
+      if (node?.right) {
         queue.enqueue(node.right);
       }
     }
@@ -107,7 +105,7 @@ class BinarySearchTree {
     return result;
   }
 
-  min(root = this.root) {
+  min(root = this.root): T | undefined {
     if (this.isEmpty()) return undefined;
 
     let current = root;
@@ -119,7 +117,7 @@ class BinarySearchTree {
     return current.value;
   }
 
-  max(root = this.root) {
+  max(root = this.root): T | undefined {
     if (this.isEmpty()) return undefined;
 
     let current = root;
@@ -131,11 +129,11 @@ class BinarySearchTree {
     return current.value;
   }
 
-  delete(value) {
+  delete(value: T) {
     this.root = this.deleteNode(this.root, value);
   }
 
-  deleteNode(root, value) {
+  deleteNode(root: BSTNode<T> | null, value: T): BSTNode<T> | null {
     if (!root) return root; // Base case
 
     // Recursion until we reach the Node to be deleted
@@ -152,7 +150,9 @@ class BinarySearchTree {
       if (!root.right) return root.left;
 
       // 3. Node has two child
-      root.value = this.min(root.right);
+      const minVal = this.min(root.right);
+      if (!minVal) return root;
+      root.value = minVal;
       root.right = this.deleteNode(root.right, root.value);
     }
 
