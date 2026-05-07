@@ -46,6 +46,41 @@ class BinarySearchTree {
       return this.contains(value, root.right);
     }
   }
+
+  preOrder(root = this.root, result = []) {
+    if (root) {
+      result.push(root.value);
+
+      this.preOrder(root.left, result);
+      this.preOrder(root.right, result);
+    }
+
+    return result;
+  }
+
+  inOrder(root = this.root, result = []) {
+    if (root) {
+      this.inOrder(root.left, result);
+
+      result.push(root.value);
+
+      this.inOrder(root.right, result);
+    }
+
+    return result;
+  }
+
+  postOrder(root = this.root, result = []) {
+    if (root) {
+      this.postOrder(root.left, result);
+
+      this.postOrder(root.right, result);
+
+      result.push(root.value);
+    }
+
+    return result;
+  }
 }
 
 export default BinarySearchTree;
