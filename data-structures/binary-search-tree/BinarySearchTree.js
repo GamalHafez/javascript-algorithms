@@ -107,10 +107,10 @@ class BinarySearchTree {
     return result;
   }
 
-  min() {
+  min(root = this.root) {
     if (this.isEmpty()) return undefined;
 
-    let current = this.root;
+    let current = root;
     if (!current) return undefined;
 
     while (current.left) {
@@ -119,16 +119,44 @@ class BinarySearchTree {
     return current.value;
   }
 
-  max() {
+  max(root = this.root) {
     if (this.isEmpty()) return undefined;
 
-    let current = this.root;
+    let current = root;
     if (!current) return undefined;
 
     while (current.right) {
       current = current.right;
     }
     return current.value;
+  }
+
+  delete(value) {
+    this.root = this.deleteNode(this.root, value);
+  }
+
+  deleteNode(root, value) {
+    if (!root) return root; // Base case
+
+    // Recursion until we reach the Node to be deleted
+    if (value < root.value) {
+      root.left = this.deleteNode(root.left, value);
+    } else if (value > root.value) {
+      root.right = this.deleteNode(root.right, value);
+    } else {
+      // 1. Delete a leaf node
+      if (!root.left && !root.right) return null;
+
+      // 2. Node has one child
+      if (!root.left) return root.right;
+      if (!root.right) return root.left;
+
+      // 3. Node has two child
+      root.value = this.min(root.right);
+      root.right = this.deleteNode(root.right, root.value);
+    }
+
+    return root;
   }
 }
 
