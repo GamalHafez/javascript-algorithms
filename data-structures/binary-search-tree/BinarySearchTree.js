@@ -1,5 +1,5 @@
 import BSTNode from "./BSTNode.js";
-
+import Queue from "../queue/queue.ts";
 class BinarySearchTree {
   constructor() {
     this.root = null;
@@ -77,6 +77,31 @@ class BinarySearchTree {
       this.postOrder(root.right, result);
 
       result.push(root.value);
+    }
+
+    return result;
+  }
+
+  levelOrder() {
+    if (this.isEmpty()) return [];
+
+    const queue = new Queue();
+    const result = [];
+
+    queue.enqueue(this.root);
+
+    while (!queue.isEmpty()) {
+      const node = queue.dequeue();
+
+      result.push(node.value);
+
+      if (node.left) {
+        queue.enqueue(node.left);
+      }
+
+      if (node.right) {
+        queue.enqueue(node.right);
+      }
     }
 
     return result;
