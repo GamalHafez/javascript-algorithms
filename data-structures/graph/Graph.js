@@ -15,4 +15,16 @@ class Graph {
     this.AdjacencyList[v1].add(v2);
     this.AdjacencyList[v2].add(v1);
   }
+
+  hasEdge(v1, v2) {
+    if (!this.AdjacencyList[v1] || !this.AdjacencyList[v2]) return false;
+
+    return this.AdjacencyList[v1].has(v2) && this.AdjacencyList[v2].has(v1);
+  }
+
+  display() {
+    for (let vertex in this.AdjacencyList) {
+      console.log(`${vertex} --> ${[...this.AdjacencyList[vertex]]}`);
+    }
+  }
 }
